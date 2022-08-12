@@ -2,6 +2,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
+#include<Windows.h>
 
 void RSP()
 {
@@ -16,6 +17,19 @@ void RSP()
 		scanf_s("%d", &p);
 		e = rand();
 		e = (int)e % 3;
+		system("cls");
+		switch (p)
+		{
+		case 1:
+			printf("플레이어 : 가위\n");
+			break;
+		case 2:
+			printf("플레이어 : 바위\n");
+			break;
+		case 3:
+			printf("플레이어 : 보\n");
+			break;
+		}
 		switch (e)
 		{
 		case 1:
@@ -50,11 +64,12 @@ void RSP()
 		}
 		printf("again?\n1 - Yes\n2 = No\n");
 		scanf_s("%d", &p);
-
+		system("cls");
 		if (p == 2)
 		{
 			IsGameOver = 1;
 		}
+
 	}
 
 }
