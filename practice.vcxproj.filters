@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Class Data">
+      <UniqueIdentifier>{3dcef153-9a4d-482f-bac8-40b9d63843a0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="소스.c">
@@ -21,9 +24,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="220809.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>Class Data</Filter>
     </ClInclude>
     <ClInclude Include="220810.h">
+      <Filter>Class Data</Filter>
+    </ClInclude>
+    <ClInclude Include="220811.h">
+      <Filter>Class Data</Filter>
+    </ClInclude>
+    <ClInclude Include="RSP%2820220812%29.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

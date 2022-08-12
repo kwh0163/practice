@@ -144,6 +144,8 @@
   <ItemGroup>
     <ClInclude Include="220809.h" />
     <ClInclude Include="220810.h" />
+    <ClInclude Include="220811.h" />
+    <ClInclude Include="RSP%2820220812%29.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
