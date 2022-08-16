@@ -35,5 +35,14 @@
     <ClInclude Include="RSP%2820220812%29.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="220812.h">
+      <Filter>Class Data</Filter>
+    </ClInclude>
+    <ClInclude Include="quadrant%2820220816%29.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="220816.h">
+      <Filter>Class Data</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -145,6 +145,9 @@
     <ClInclude Include="220809.h" />
     <ClInclude Include="220810.h" />
     <ClInclude Include="220811.h" />
+    <ClInclude Include="220812.h" />
+    <ClInclude Include="220816.h" />
+    <ClInclude Include="quadrant%2820220816%29.h" />
     <ClInclude Include="RSP%2820220812%29.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
