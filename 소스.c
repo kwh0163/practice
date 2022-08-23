@@ -2,75 +2,96 @@
 
 void main()
 {
-	//포인터의 크기
+	//포인터 연산
 	/*
-	double value = 9.36;
-	double x = 10.97;
+	int array[5] = {10, 15, 20, 25, 30};
 
-	//포인터 변수를 저장하기 위해 주소 값을 저장할 변수의 자료형과 포인터 변수의 자료형이 일치해야 합니다.
-	double* ptr = &value;
+	printf("배열의 주소 : %p\n", array);
 
-	printf("value의 값 : %lf\n", *ptr);
-	printf("ptr 포인터 변수의 크기 : %d\n", sizeof(ptr));
+	//pointer변수는 array의 시작주소를 가리킵니다.
+	int* pointer = array;
 
-	//ptr 변수가 가리키는 주소를 value에서 x라는 변수의 주소로 변경합니다.
+	printf("포인터 변수의 값 : %p\n", pointer);
+	printf("포인터 변수가 가리키는 값 : %d\n", *pointer);
+
+	//pointer변수가 가리키는 자료형의 크기만큼 증가합니다.
+	pointer = pointer + 1;
+	printf("포인터 변수의 값 : %p\n", pointer);
+	printf("포인터 변수가 가리키는 값 : %d\n", *pointer);
+
+	pointer += 2;
+	*pointer = 100;
+	printf("배열의 4번째 요소 : %d\n", array[3]);
+	*/
+
+	//최댓값과 최솟값 구하기
+	/*
+	//data라는 배열 안에서 최댓값 : 66
+	//data라는 배열 안에서 최솟값 : 1
+
+	int max = 0;
+	int min = 100001;
+	
+	int data[5] = { 10,5,66,1,2 };
+
+	for (int i = 0; i < sizeof(data) / sizeof(int); i++)
+	{
+		if (data[i] > max)
+		{
+			max = data[i];
+		}
+		if (data[i] < min)
+		{
+			min = data[i];
+		}
+	}
+
+	printf("배열에 있는 원소의 최댓값 : %d\n배열에 있는 원소의 최솟값 : %d\n", max, min);
+	*/
+
+	//상수 지시 포인터
+	/*
+	//상수를 가리키는 포인터이며, 포인터 자체는 상수가 아닙니다.
+
+	int value = 100;
+	int x = 300;
+	const int* ptr = &value;
+
+	//포인터 변수가 가리키는 값을 변경할 수 없습니다.
+	//*ptr = 100;
+
+	//상수 지시 포인터는 가리키는 변수를 상수화하지 않습니다.
+	value = 200;
+
+	//포인터 가리키는 값은 출력할 수 있습니다.
+	printf("ptr이 가리니는 값 : %d\n", *ptr);
+
+	//상수 지시 포인터의 경우 다른 변수의 주소는 저장할 수 있습니다.
 	ptr = &x;
-	printf("ptr의 값 : %lf\n", *ptr);
 
-	*ptr = 20.52;
-	printf("ptr의 값 : %lf\n", *ptr);
+	
+	printf("ptr이 가리키는 값 : %d\n", *ptr);
 	*/
 
-	//배열
-	//같은 자료형의 변수들로 이루어진 유한 집합
-	/*
-	int array[5];
+	//2차원 배열
+	//배열의 요소로 또 다른 배열을 가지는 배열
 
-	//배열의 경우 첫 번째 원소는 0부터 시작
-	array[0] = 10;
-	array[1] = 20;
-	array[2] = 30;
-	array[3] = 40;
-	array[4] = 50;
-
-	printf("array의 첫 번째 값 : %d\n", array[0]);
-	printf("array의 두 번째 값 : %d\n", array[1]);
-	printf("array의 세 번째 값 : %d\n", array[2]);
-	printf("array의 네 번째 값 : %d\n", array[3]);
-	printf("array의 다섯 번째 값 : %d\n", array[4]);
-
-	printf("array의 크기 : %d\n", sizeof(array));
-	*/
-
-	//배열의 초기화
-	/*
-	//0번째 요소(10) 1번째 요소(5) 2번째 요소(0)
-	int room[3] = { 10, 5, 0 };
-
-	//배열의 크기를 구하는 방법
-	//배열의 크기 / 배열의 자료형
-	int size = sizeof(room) / sizeof(int);
-
-	for (int i = 0; i < size; i++)
+	//앞에 있는 배열이 열의 길이, 뒤에 있는 배열이 행의 길이
+	//3열 2행
+	int team[3][2] =
 	{
-		printf("room %d번째 요소 : %d\n", i, room[i]);
-	}
-	*/
+		{0, 5},
+		{10, 4},
+		{9, 1}
+	};
 
-	//배열의 크기를 생략할 수 있으며, 초기화 목록에 설정된 수를 컴파일러가 자동으로 계산해줍니다.
-	double team[] = {5.1, 6.8, 7.7, 49.63, 11.07};
-	printf("team배열의 크기 : %d\n", sizeof(team));
-
-	for (int i = 0; i < sizeof(team) / sizeof(double); i++)
+	//2중 for문을 이용해서 2차원 배열의 값을 전부 출력
+	for (int i = 0; i < 3; i++)
 	{
-		team[i] = 0;
-		printf("%d번째 요소의 값 : %lf\n", i, team[i]);
+		for (int j = 0; j < 2; j++)
+		{
+			printf("%d번 째 열의 %d 번 째 행의 값 : %d\n",i, j, team[i][j]);
+		}
 	}
-	//team[0] -> 5.1
-	//team[1] -> 6.8
-	//team[2] -> 7.7
-	//team[3] -> 49.63
-	//team[4] -> 11.07
-
 
 }
