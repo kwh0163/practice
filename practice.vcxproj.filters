@@ -56,5 +56,8 @@
     <ClInclude Include="220822.h">
       <Filter>Class Data</Filter>
     </ClInclude>
+    <ClInclude Include="220823.h">
+      <Filter>Class Data</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
