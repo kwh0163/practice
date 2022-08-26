@@ -1,136 +1,125 @@
 #include<stdio.h>
 
-//char, int, float
+//함수의 원형
+//호출할 함수를 컴파일러에게 미리 알려주는 과정
+//단일 패스 컴파일(O), 멀티 패스 컴파일
+void Function(const char * name, void * value);
 
-//void는 자료형이 없다.
-//함수는 main() 함수에 외부에서 선언이 되어야 합니다.
-//함수에 매개변수가 들어가지 않아도 선얼할 수 있습니다.
-void Function() // () <- 매개변수가 들어가는 영역
-{	// <- Function의 시작점
-	printf("안녕하세요?\n");
-	printf("안녕하세요?\n");
-	printf("안녕하세요?\n");
-
-	for (int i = 0; i < 3; i++)
-	{
-		printf("안녕하세요?\n");
-	}
-}	// <- Function의 종료지점
-
-//매개 변수
-//함수의 정의에서 전달받은 인수를 함수 내부로 전달하기 위해 사용하는 변수
-//매개 변수를 선언하기 위해서는 자료형을 정해주어야 합니다.
-void Temp(int x)
+void Integer(int x)
 {
-	printf("변수 x의 값 : %d\n", x);
+	printf("Integer 함수의 x값 : %d\n", x);
 }
 
-//함수의 이름도 중복이 허용되지 않습니다.
-//매개변수는 여러 개를 생성해서 사용할 수 있습니다.
-void Add(int x, int y)
+void Decimal(float x)
 {
-	int result = x + y;
-	printf("result의 값은 : %d\n", result);
+	printf("Decimal 함수의 x값 : %f\n", x);
 }
 
-//전역 변수
-//함수 외부에서 선언된 변수로, 어디서든 접근 가능하며, 
-//프로그램이 종료될 때 메모리에서 사라지는 특징을 가지고 있습니다.
-
-int count = 0;
-
-void Minus()
+void Character(char x)
 {
-	count++;
-	printf("count 변수의 주소 : %p\n", &count);
-	printf("count 변수의 값 : %d\n", count);
+	printf("Character 함수의 x값 : %c\n", x);
 }
 
-//정적 변수
-//지역 변수의 특성을 가지면서, 전역 변수의 특성을 가지고 있는 변수
-void Home()
+void Swap(int* x, int* y)
 {
-	static int variable = 0;
-	variable++;
-	printf("variable의 값 : %d\n", variable);
-} //<- variable(프로그램이 종료될 때까지 메모리에 남아있습니다.)
-void Area()
-{
-	int position = 0;
-	position++;
-	printf("position의 값은 : %d\n", position);
+	int temp = *y;
+	*y = *x;
+	*x = temp;
 }
 
-//반환형이란?
-//함수의 실행이 끝나고 함수에게 전달하는 결과 값
-//void는 자료형이 없으므로 반환형이 필요없다.
-//자료형이 있는 함수는 자료형에 알맞는 결과값을 돌려줘야 한다.
-
-int Calculator()
+void Plus(int x, int y)
 {
-	return 10;
+	printf("%d + %d = %d\n", x, y, x + y);
 }
 
-float Divide(float x, float y)
+void Minus(int x, int y)
 {
-	return x / y;
+	printf("%d - %d = %d\n", x, y, x - y);
 }
 
-//사용자 정의 함수를 사용하려면 main()함수에서 무조건 호출해야 합니다.
+void Mult(int x, int y)
+{
+	printf("%d * %d = %d\n", x, y, x * y);
+}
+
+void Div(int x, int y)
+{
+	printf("%d / %d = %f\n", x, y, (float)x / y);
+}
+
 void main()
 {
-	//함수
+	//범용(void) 포인터란?
 	/*
-	//하나의 특별한 목적의 작업을 수행하기 위해 독립적으로 설계된 코드의 집합
+	//자료형이 정해지지 않은 상태로 모든 자료형을 저장할 수 있는 포인터
+	int value = 10;
+	void* ptr = &value;
+	
+	//범용 포인터는 메모리 주소에 접근해서 값을 변경할 수 없다
 
-	//호출하는 함수의 이름 정확하게 넣어주어야 합니다.
-	Function(); // <- 함수의 호출
-	Function();
+	*(int *)ptr = 20;
+	printf("ptr이 가리키는 값 : %d\n", *(int*)ptr);
+
+	//범용 포인터로 변수의 메모리에 접근하려면 범용 포인터가 가리키는
+	//변수의 자료형으로 형 변환을 해줘야 함
+
+	float decimal = 10.5;
+	ptr = &decimal;
+	*(float*)ptr = 20.5;
+	printf("ptr이 가리키는 값 : %f\n", *(float*)ptr);
+	
+	//내가 함수에 입력하는 데이터(변수)가 출력되도록 하고 싶을 때
+	//char int float(실수)
+	//Integer(50);
+	//Character('A');
+	//Decimal(10.5);
+	int A = 10;
+	float B = 99.6;
+	char C = 'R';
+	Function("int", &A);
+	Function("float", &B);
+	Function("char", &C);
 	*/
 
-	//매개변수를 선언한 함수는 함수를 호출할 때 인수를 넣어주어야 합니다.
-	//인수란?
-	/*
-	//함수가 호출될 때 매개변수에 실제로 전달되는 값
-	int value = 100;
-	int value1 = 200;
-	Temp(value); //value <- 인수
-	Temp(value1); //value1 <- 인수
+	//두 개의 변수의 값 바꾸기
+	//하나의 임시 변수를 만들어서 거기에 값을 보관했다가 옮기면 됨
+	int A = 10;
+	int B = 20;
+	printf("변수 A의 값 : %d, 변수 B의 값 : %d\n", A, B);
 
-	Add(10, 20);
-	*/
+	
+	Swap(&A, &B);
+	
+	printf("변수 A의 값 : %d, 변수 B의 값 : %d\n", A, B);
 
-	//지역 변수
-	/*
-	//{}내에서 선언된 변수로 {}내에서만 사용할 수 있으며, {}를 벗어나면 소멸됩니다.
-	int x = 10;
+	//더하기 함수
+	Plus(5, 3);
+
+	//빼기 함수
+	Minus(7, 6);
+
+	//곱셈 함수
+	Mult(4, 8);
+
+	//나눗셈 함수
+	Div(8, 2);
+
+
+
+}
+
+void Function(const char* name, void* value)
+{
+	if (name == "int")
 	{
-		int x = 20;
-		printf("중괄호 안에 있는 x의 주소 : %p\n", &x);
+		printf("%d\n", *(int*)value);
 	}
-
-	x = 100;
-	printf("x의 주소 : %p\n", &x);
-	
-	count++;
-	Minus();
-
-	//정적 변수
-	
-	Home();
-	Home();
-	Home();
-
-	Area();
-	Area();
-	Area();
-	*/
-	
-	printf("함수의 값 : %d\n", Calculator());
-
-	int memory = Calculator();
-	printf("memory 변수의 값 : %d\n", memory);
-
-	printf("나누기 함수의 값 : %f\n", Divide(5, 2));
-
+	else if (name == "float")
+	{
+		printf("%f\n", *(float*)value);
+	}
+	else if (name == "char")
+	{
+		printf("%c\n", *(char*)value);
+	}
 }
