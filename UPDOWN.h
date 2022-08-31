@@ -18,45 +18,54 @@ void UPDOWN()
 	srand(time(NULL));  //시간 가져오기
 	int random = rand() % 100 + 1;    //난수 생성
 	int p = 0;		//플레이어에게 입력받을 변수
-	int PlayerWin = 0;	//플레이어가 난수를 맞추었는지 여부
+	int Gameover = 0;	//플레이어가 난수를 맞추었는지 여부
 	int HP = 10;	//player HP
-	char P;
-	while (!PlayerWin)
+	int P = 0;
+	int count = 1;
+	while (!Gameover)
 	{
-		if (HP == 0)
+		while (HP == 0)
 		{
-			printf("컴퓨터에게 지셨습니다.\n다시 하시겠습니까?\nY/N\n");
-			scanf_s("%c", P);
-			if (P == 'Y')
+			P = 0;
+			printf("컴퓨터에게 지셨습니다.\n다시 하시겠습니까?\n1 - Y/2 - N\n");
+			scanf_s("%p", &P);
+			if (P == 1)
 			{
 				HP = 10;
 			}
-			else if (P == 'N')
+			else if (P == 2)
 			{
-				PlayerWin = 1;
+				Gameover = 1;
+				break;
 			}
 			else
 			{
 				printf("다시 입력해주세요.\n");
 			}
 		}
-		printf("100이하의 정수를 입력해주세요.\n");
-		scanf_s("%d", &p);
+		while (HP != 0)
+		{
+			printf("100이하의 정수를 입력해주세요.\n");
+			scanf_s("%d", &p);
 
-		if (p == random)
-		{
-			printf("정답입니다. %d번 만에 맞추셨습니다.\n", 11 - HP);
-			PlayerWin = 1;
-		}
-		else if (p > random)
-		{
-			printf("DOWN\n");
-			HP--;
-		}
-		else if (p < random)
-		{
-			printf("UP\n");
-			HP--;
+			if (p == random)
+			{
+				printf("정답입니다. %d번 만에 맞추셨습니다.\n", count);
+				Gameover = 1;
+				HP = 0;
+			}
+			else if (p > random)
+			{
+				printf("DOWN\n");
+				count++;
+				HP--;
+			}
+			else if (p < random)
+			{
+				printf("UP\n");
+				count++;
+				HP--;
+			}
 		}
 		
 	}
