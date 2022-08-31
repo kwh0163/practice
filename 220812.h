@@ -1,6 +1,6 @@
 #pragma once
 #include<stdio.h>
-/*
+
 void main()
 {
 	//부호가 없는 자료형
@@ -91,4 +91,3 @@ void main()
 		printf("세번째 조건\n");
 	}
 }
-*/

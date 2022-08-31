@@ -1,6 +1,6 @@
 #pragma once
 #include<stdio.h>
-/*
+
 void main()
 {
 	//컴퓨터는 0 또는 1이라는 숫자로만 이해
@@ -43,4 +43,3 @@ void main()
 	char variable = -129;
 	printf("variable의 값 : %d\n", variable);
 }
-*/

@@ -1,7 +1,7 @@
 #pragma once
 #include<stdio.h>
 
-/*
+
 void main()
 {
 	// ÀÚ·áÇü
@@ -21,4 +21,3 @@ void main()
 	printf("Hello");
 	
 }
-*/

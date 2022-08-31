@@ -28,7 +28,7 @@ void UPDOWN()
 		{
 			P = 0;
 			printf("컴퓨터에게 지셨습니다.\n다시 하시겠습니까?\n1 - Y/2 - N\n");
-			scanf_s("%p", &P);
+			scanf_s("%d", &P);
 			if (P == 1)
 			{
 				HP = 10;

@@ -1,60 +1,66 @@
 #include<stdio.h>
+#include<stdlib.h>
 
-//재귀 함수
-void Function(int count)
+void Function()
 {
-	if (count == 1)
-	{
-		return;
-	}
-	Function(count - 1);
-
-	printf("count 변수의 값 : %d\n", count);
+	printf("Hello\n");
 }
-//팩토리얼
-int Factorial(int num)
-{
-	if (num == 1)
-	{
-		return 1;
-	}
-	int x = Factorial(num - 1) * num;
-	return x;
-}
-
-
 
 void main()
 {
-	//삼항 연산자
-	//3개의 피연산자를 가지는 조건 연산자입니다.
+	//이중 포인터 응용
 	/*
-	int x = 10;
-	int y = 20;
+	int a = 10;
+	int b = 20;
 
-	//(조건) ? (100) : (200)
-	int temp = x == y ? 100 : 200;
+	int* ptr1 = &a;
+	int* ptr2 = &b;
 
-	printf("temp 변수의 값 : %d\n", temp);
+	int** pptr1 = &ptr1;
+	int** pptr2 = &ptr2;
+
+	int* temp = *pptr1;
+	*pptr1 = *pptr2;
+	*pptr2 = temp;
+
+	printf("a의 값은 : %d, b의 값은 : %d\n", a, b);
+	printf("ptr1이 가리키는 값 : %d, ptr2가 가리키는 값 : %d\n", *ptr1, *ptr2);
 	*/
 
-	//재귀 함수란?
+	//댕글링 포인터
 	/*
-	//어떤 함수에서 자신을 다시 호출하여 작업을 수행하는 함수
-	Function(3);
-	//재귀함수는 함수를 계속 호출하기 때문에
-	//스택 영역에 메모리가 계속 쌓이게 되므로  스택 오버플로우가 일어나게 됩니다.
+	//이미 해제된 메모리를 가리키고 있는 포인터
+	int* ptr = (int*)malloc(sizeof(int));
 	
-	//재귀 함수를 사용하려면 특정한 시점에서 함수를 반환해주어야 합니다.
+	*ptr = 10;
+
+	printf("ptr이 가리키는 주소 : %p\n", ptr);
+	printf("ptr이 가리키는 값 : %d\n", *ptr);
+
+	free(ptr);
+
+	//동적 할당한 메모리를 해제할 때 포인터 변수를 NULL로 초기화합니다.
+	ptr = NULL;
+
+	//해제한 메모리를 다시 할당하면 처음 생성한 위치에서 메모리가 생성됩니다.
+	ptr = (int*)malloc(sizeof(int));
+
+	*ptr = 20;
+	printf("ptr이 가리키는 주소 : %p\n", ptr);
+	printf("ptr이 가리키는 값 : %d\n", *ptr);
 	*/
 
-	//팩토리얼
-	//함수를 생성해서 매개 변수에 n값을 넣어줍니다.
-	//n에 값에 대한 팩토리얼을 구해주세요.
+	//함수 포인터
 
+	//함수의 주소값을 저장하고 가리킬 수 있는 변수
+	//printf("Function함수의 주소 : %p\n", Function);
+	//printf("Function함수의 주소 : %p\n", &Function);
 
-	int result = Factorial(3);
-	printf("resuㅣt 변수의 값 : %d\n", result);
+	void (*fp)();
+	//함수 포인터는 함수의 반환형과 매개변수의 타입이 일치해야 하며
+	//함수 포인터를 사용하는 동적으로 메모리를 할당할 수 없습니다.
+	fp = Function;
+	fp();
 
 
 

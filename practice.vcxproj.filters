@@ -71,8 +71,11 @@
     <ClInclude Include="220829.h">
       <Filter>Class Data</Filter>
     </ClInclude>
-    <ClInclude Include="UPDOWN.h">
+    <ClInclude Include="UPDOWN%2820220829%29.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="220830.h">
+      <Filter>Class Data</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
