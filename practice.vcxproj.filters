@@ -12,7 +12,7 @@
     <Filter Include="Class Data">
       <UniqueIdentifier>{3dcef153-9a4d-482f-bac8-40b9d63843a0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Class Data\리소스 파일">
+    <Filter Include="리소스 파일">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
@@ -75,6 +75,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="220830.h">
+      <Filter>Class Data</Filter>
+    </ClInclude>
+    <ClInclude Include="220831.h">
       <Filter>Class Data</Filter>
     </ClInclude>
   </ItemGroup>

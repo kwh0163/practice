@@ -1,66 +1,91 @@
 #include<stdio.h>
-#include<stdlib.h>
-
-void Function()
-{
-	printf("Hello\n");
-}
 
 void main()
 {
-	//이중 포인터 응용
+	//포인터 배열
 	/*
-	int a = 10;
-	int b = 20;
+	//배열의 요소로 포인터 변수를 가지는 배열
 
-	int* ptr1 = &a;
-	int* ptr2 = &b;
+	int num1 = 10, num2 = 20, num3 = 30;
 
-	int** pptr1 = &ptr1;
-	int** pptr2 = &ptr2;
+	int* array[3] = { &num1, &num2, &num3 };
 
-	int* temp = *pptr1;
-	*pptr1 = *pptr2;
-	*pptr2 = temp;
-
-	printf("a의 값은 : %d, b의 값은 : %d\n", a, b);
-	printf("ptr1이 가리키는 값 : %d, ptr2가 가리키는 값 : %d\n", *ptr1, *ptr2);
-	*/
-
-	//댕글링 포인터
-	/*
-	//이미 해제된 메모리를 가리키고 있는 포인터
-	int* ptr = (int*)malloc(sizeof(int));
+	for (int i = 0; i < 3; i++)
+	{
+		printf("array 포인터의 값 : %p\n", array[i]);
+		printf("array 포인터가 가리키는 값 : %d\n", *array[i]);
+	}
 	
-	*ptr = 10;
+	const char* data[3] = { "Apple", "Banana", "Melon" };
 
-	printf("ptr이 가리키는 주소 : %p\n", ptr);
-	printf("ptr이 가리키는 값 : %d\n", *ptr);
+	data[0] = "Something";
 
-	free(ptr);
-
-	//동적 할당한 메모리를 해제할 때 포인터 변수를 NULL로 초기화합니다.
-	ptr = NULL;
-
-	//해제한 메모리를 다시 할당하면 처음 생성한 위치에서 메모리가 생성됩니다.
-	ptr = (int*)malloc(sizeof(int));
-
-	*ptr = 20;
-	printf("ptr이 가리키는 주소 : %p\n", ptr);
-	printf("ptr이 가리키는 값 : %d\n", *ptr);
+	for (int i = 0; i < 3; i++)
+	{
+		printf("%s\n", data[i]);
+	}
 	*/
 
-	//함수 포인터
+	//ASCII 코드란
+	/*
+	//미국 표준화 협회가 제정한 정보 교환용 표준 코드로 영문 
+	//알파벳을 사용하는 대표적인 문자 인코딩
 
-	//함수의 주소값을 저장하고 가리킬 수 있는 변수
-	//printf("Function함수의 주소 : %p\n", Function);
-	//printf("Function함수의 주소 : %p\n", &Function);
+	if ('A' < 'B')
+	{
+		for (int i = 0; i < 26; i++)
+		{
+			char alphabet = 'a' + i;
+			char Alphabet = 'A' + i;
+			printf("%c %c\n", Alphabet, alphabet);
+		}
+	}
+	*/
 
-	void (*fp)();
-	//함수 포인터는 함수의 반환형과 매개변수의 타입이 일치해야 하며
-	//함수 포인터를 사용하는 동적으로 메모리를 할당할 수 없습니다.
-	fp = Function;
-	fp();
+	//공약수
+	/*
+	//두 수의 변수를 입력받습니다.
+	//A 변수와 B 변수의 공통된 약수 출력
+
+	int A;
+	int	B;
+
+	scanf_s("%d%d", &A, &B);
+
+	for (int i = 1; i <= A && i <= B ; i++)
+	{
+		if (A % i == 0 && B % i == 0)
+		{
+			printf("%d ", i);
+		}
+	}
+	printf("\n");
+	*/
+
+	//짝수 완전수
+	//자기 자신을 제외한 양의 약수를 더했을 때
+	//자기 자신이 되는 양의 정수를 말한다.
+
+	int value;
+	int sum = 0;
+
+	scanf_s("%d", &value);
+
+	for (int i = 1; i < value; i++)
+	{
+		if (value % i == 0)
+		{
+			sum += i;
+		}
+	}
+	if (sum == value)
+	{
+		printf("완전수 입니다.\n");
+	}
+	else
+	{
+		printf("완전수가 아닙니다.\n");
+	}
 
 
 
