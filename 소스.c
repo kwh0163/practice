@@ -1,118 +1,103 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
-#include<conio.h>
-#include<Windows.h>
-#include<mmsystem.h>
 
-#pragma comment(lib,"winmm.lib")
-
-enum textColor
+struct Object
 {
-	BLACK,
-	BLUE,
-	GREEN,
-	SILVER,
-	RED,
-	OFTEN,
-	YELLOW,
-	WHITE,
-	GRAY
+	short size; //2byte
+	int height; //4byte
+	double position; //8byte
+
 };
 
-void CursorActive()
+struct Monster
 {
-	CONSOLE_CURSOR_INFO cursor;
-	GetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cursor);
-	
-	//.bVisible = 커서 노출 여부에 대한 변수
-	//0일 때 커서 비활성화
-	//1일 때 커서 활성화
-	cursor.bVisible = 0;
+	int healte; //4byte
+	double attack; //8byte
+	short defense; //2byte
+};
 
-	//SetConsoleCursorInfo = 지정되어 있는 콘솔 스크린 버퍼어ㅔ 대하여 커서의 형태를 설정하는 함수
-	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cursor);
+struct Data
+{
+	int x; //4byte
+	int y; //4byte
+};
 
+struct Shape
+{
+	char name[10]; //10byte
+	double size; //8byte
+};
 
-}
+struct Animal
+{
+	int leg;
+	double size;
+};
 
 int main()
 {
-	CursorActive();
-
-	//파일 쓰기
-	/*
-	//fopen()
-	//첫 번째 매개변수 : 텍스트 파일의 이름
-	//두 번째 매개변수 : 텍스트 파일의 입출력 모드 (read / write)
-	FILE* filePointer = fopen("data.txt", "w");
-
-	//fputs : 파일의 문자를 하나씩 쓰는 함수
-
-	fputs("체력\n", filePointer);
-	fputs("마력\n", filePointer);
-	fputs("공격력\n", filePointer);
 	
-	//fclose : 열어놓은 파일을 닫아줍니다.
-	fclose(filePointer);
+	//바이트 패딩
+	/*
+	//구조체의 경우 정의해주어야 멤버 변수의 메모리가 생기므로
+	//멤버 변수의 데이터를 초기화할 수 있습니다.
+	struct Object character = { 10, 100, 3.5f };
+	struct Data data = { 10, 10 };
+
+	//구조체 크기의 경우 멤버 변수의 순서에 따라 메모리의 크기가
+	//다르게 설정될 수 있으며, 구조체 크기를 결정하는 형태는
+	//기본 자료형으로만 구성됩니다.
+	struct Monster dragon = { 100,30.5f,10 };
+	struct Shape circle;
+
+	printf("Object 구조체의 크기 : %d\n", sizeof(character));
+	printf("Data 구조체의 크기 : %d\n", sizeof(data));
+	printf("Monster 구조체의 크기 : %d\n", sizeof(dragon));
+	printf("Shape 구조체의 크기 : %d\n", sizeof(circle));
+
+	//멤버 변수를 메모리에서 CPU로 읽을 때 한 번에 읽을 수 있도록
+	//컴파일러가 레지스터의 블록에 맞추어 바이트를 패딩해주는 최적화작업
+
+	//align 규칙
+	//CPU가 데이터를 읽을때
+	//홀수(X) 3byte, 5byte/ 짝수(O) 2byte 4byte 8byte
+
+	//구조체의 크기는 구조체를 구성하는 멤버 중에
+	//
 	*/
 
-	//파일 읽기
+	//구조체 포인터
 	/*
-	FILE* readPointer = fopen("Resources/dragon.txt", "r");
+	//구조체를 가리키는 포인터
 
-	//text 파일의 문자 데이터를 담을 수 있는 버퍼 선언
-	char Buffer[10000] = { 0, };
+	struct Animal* pointer;
 
-	//첫 번째 매개변수 : 읽기 위한 버퍼 배열을 정의합니다.
-	//두 번째 매개변수 : 크기를 가지는 배열을 가리키는 포인터
-	//세 번째 매개변수 : 읽어들일 원소의 크기로 단위는 바이트입니다.
-	//네 번째 매개변수 : 데이터를 입력받을 스트림의 FILE객체를 가리키는 포인터
-	fread(Buffer, 1, 10000, readPointer);
+	printf("구조체 포인터의 크기 : %d\n", sizeof(pointer));
 
-	printf("%s", Buffer);
+	struct Animal cat;
 
-	fclose(readPointer);
+	//구조체 주소는 구조체 첫번째 멤버 변수에 있는 시작주소를
+	//의미합니다.
+	printf("구조체 cat의 주소 : %p\n", &cat);
+	printf("구조체 cat의 leg 주소 : %p\n", &cat.leg);
+	printf("구조체 cat의 size 주소 : %p\n", &cat.size);
+
+	pointer = &cat;
+
+	//구조체 포인터로 구조체에 있는 메모리에 접근할 때는
+	//-> 연산자를 사용해야 합니다.
+	pointer->leg = 200;
+	pointer->size = 90.3f;
+
+	printf("구조체 포인터로 접근한 leg의 값 : %d\n", pointer->leg);
+	printf("구조체 포인터로 접근한 leg의 값 : %.1lf\n", pointer->size);
+
+	//멤버 연산자를 사용하려면 연산자 우선 순위에 맞추어 작성하면 됨
+	(*pointer).leg = 400;
+	(*pointer).size = 50.6f;
+
+	printf("구조체 포인터로 접근한 leg의 값 : %d\n", pointer->leg);
+	printf("구조체 포인터로 접근한 leg의 값 : %.1lf\n", pointer->size);
 	*/
-
-	//영어와 한글 데이터 차이
-	/*
-	//영어는 1byte로 표기합니다.
-	//0 ~ 255 (256)가지의 데이터를 표현할 수 있습니다.
-	//영어는 아스키 코드 체계
-	char array[] = "Hello";
-
-	//한글은 2byte로 데이터를 표현합니다.
-	//초성 19자, 중성 21자, 종성 28자로 이루어져서 11172자를 표현하게 됩니다.
-	//한글은 유니 코드 체계
-	char korean[] = "안녕하세요";
-	*/
-
-	//SetConsoleTextAttribute : 텍스트의 색상을 바꿔주는 함수
-	/*
-	int count = 0;
-	for (int i = 0; i < 16; i++)
-	{
-		for (int j = 0; j < 16; j++)
-		{
-			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), count);
-			printf("■  ");
-			count++;
-		}
-		printf("\n");
-	}
-	
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), WHITE);
-	*/
-
-	
-	//사운드 호출
-	//PlaySound는 wav 파일만 사용가능
-	PlaySound(TEXT("Resources/Sound.wav"), 0, SND_FILENAME | SND_ASYNC | SND_LOOP);
-
-	int a = 0;
-
-	scanf_s("%d", &a);
-	
 
 	return 0;
 }
