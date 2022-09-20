@@ -101,5 +101,8 @@
     <ClInclude Include="220915.h">
       <Filter>Class Data</Filter>
     </ClInclude>
+    <ClInclude Include="220919.h">
+      <Filter>Class Data</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
