@@ -1,3 +1,4 @@
+#pragma once
 #define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
 #include<string.h>
@@ -19,6 +20,8 @@ typedef struct _Player
 }Player;
 */
 
+//문제이름 : 합
+//입력값 n이 주어졌을때, 1부터 n까지의 합을 구하는 프로그램을 작성해주세요
 void plus()
 {
 	int n;
@@ -49,8 +52,6 @@ int main()
 	printf("player의 이름 : %s\n", player.name);
 	*/
 
-	//문제이름 : 합
-	//입력값 n이 주어졌을때, 1부터 n까지의 합을 구하는 프로그램을 작성해주세요
 
 	for (int i = 1; i <= 5; i++)
 	{
@@ -61,7 +62,7 @@ int main()
 		}
 		printf("\n");
 	}
-	
+
 
 	return 0;
 }
