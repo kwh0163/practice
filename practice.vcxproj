@@ -139,7 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="소스1.cpp" />
+    <ClCompile Include="소스1.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="220817.h" />
@@ -165,6 +165,7 @@
     <ClInclude Include="220919.h" />
     <ClInclude Include="220921.h" />
     <ClInclude Include="220923.h" />
+    <ClInclude Include="220926.h" />
     <ClInclude Include="Calculator.h" />
     <ClInclude Include="quadrant%2820220816%29.h" />
     <ClInclude Include="RSP%2820220812%29.h" />
